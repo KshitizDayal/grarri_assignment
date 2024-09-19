@@ -23,5 +23,26 @@ class DsFonts {
     color: DsColors.black,
   );
 
+  static const TextStyle medium18 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    fontFamily: _fontFamilyUbuntu,
+    color: DsColors.black,
+  );
+
+  static const TextStyle medium16 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    fontFamily: _fontFamilyUbuntu,
+    color: DsColors.black,
+  );
+
+  static const TextStyle medium14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    fontFamily: _fontFamilyUbuntu,
+    color: DsColors.black,
+  );
+
   static const _fontFamilyUbuntu = "Ubuntu";
 }

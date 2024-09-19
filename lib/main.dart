@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Grarri Assignment',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        scaffoldBackgroundColor: DsColors.white,
+        scaffoldBackgroundColor: DsColors.colorF1F1F1,
         appBarTheme: const AppBarTheme(
           color: DsColors.colorF0F3F1,
         ),
