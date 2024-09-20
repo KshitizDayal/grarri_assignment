@@ -61,8 +61,7 @@ class PlaceOrderScreen extends StatelessWidget {
 
           return Container(
             margin: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Stack(
               children: [
                 SingleChildScrollView(
                   child: Column(
@@ -247,51 +246,55 @@ class PlaceOrderScreen extends StatelessWidget {
                           ],
                         ),
                       ),
+                      const SizedBox(height: 80),
                     ],
                   ),
                 ),
-                OrderPlacingButton(
-                  itemQuantity: _orderProvider.cartQuantity.toString(),
-                  placeOrder: () {
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            backgroundColor: DsColors.white,
-                            content: const Text(
-                              "Are you sure you want to place the order?",
-                              style: DsFonts.medium16,
-                            ),
-                            actions: [
-                              InkWell(
-                                onTap: () {
-                                  _orderProvider.completeOrders();
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: OrderPlacingButton(
+                    itemQuantity: _orderProvider.cartQuantity.toString(),
+                    placeOrder: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              backgroundColor: DsColors.white,
+                              content: const Text(
+                                "Are you sure you want to place the order?",
+                                style: DsFonts.medium16,
+                              ),
+                              actions: [
+                                InkWell(
+                                  onTap: () {
+                                    _orderProvider.completeOrders();
 
-                                  Navigator.of(context).pushAndRemoveUntil(
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const BottomNavigationScreen()),
-                                      (Route<dynamic> route) => false);
-                                },
-                                child: const Text(
-                                  "Yes",
-                                  style: DsFonts.bold16,
+                                    Navigator.of(context).pushAndRemoveUntil(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const BottomNavigationScreen()),
+                                        (Route<dynamic> route) => false);
+                                  },
+                                  child: const Text(
+                                    "Yes",
+                                    style: DsFonts.bold16,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(width: 20),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: const Text(
-                                  "No",
-                                  style: DsFonts.bold16,
+                                const SizedBox(width: 20),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text(
+                                    "No",
+                                    style: DsFonts.bold16,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          );
-                        });
-                  },
+                              ],
+                            );
+                          });
+                    },
+                  ),
                 )
               ],
             ),

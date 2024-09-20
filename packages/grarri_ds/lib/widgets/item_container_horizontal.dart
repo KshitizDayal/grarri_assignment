@@ -6,28 +6,30 @@ class ItemContainerHorizontal extends StatelessWidget {
   final String imageAsset;
   final String dishName;
   final String price;
+  final Widget bottomButton;
   const ItemContainerHorizontal(
       {super.key,
       required this.imageAsset,
       required this.dishName,
-      required this.price});
+      required this.price,
+      required this.bottomButton});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         color: DsColors.white,
         borderRadius: BorderRadius.circular(10),
       ),
-      height: 80,
+      height: 100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            height: 70,
-            width: 70,
+            height: 80,
+            width: 80,
             margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -40,7 +42,7 @@ class ItemContainerHorizontal extends StatelessWidget {
           const SizedBox(width: 4),
           Expanded(
             child: Container(
-              margin: const EdgeInsets.symmetric(vertical: 4),
+              margin: const EdgeInsets.symmetric(vertical: 8),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,11 +69,9 @@ class ItemContainerHorizontal extends StatelessWidget {
                         ],
                       ),
                       Container(
-                        margin: const EdgeInsets.only(right: 4),
-                        child: AddButton(
-                          onTap: () {},
-                        ),
-                      ),
+                        margin: const EdgeInsets.only(right: 12),
+                        child: bottomButton,
+                      )
                     ],
                   ),
                 ],
