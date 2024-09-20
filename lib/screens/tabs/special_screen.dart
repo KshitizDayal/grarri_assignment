@@ -85,7 +85,7 @@ class SpecialScreen extends StatelessWidget {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
-                return const ItemContainer(
+                return const ItemContainerVertical(
                   imageAsset: DsImages.bowl1,
                   dishName: "Choclate Bowl",
                   price: "299",

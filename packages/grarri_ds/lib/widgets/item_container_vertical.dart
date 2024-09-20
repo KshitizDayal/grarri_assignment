@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../grarri_ds.dart';
 
-class ItemContainer extends StatelessWidget {
+class ItemContainerVertical extends StatelessWidget {
   final String imageAsset;
   final String dishName;
   final String price;
-  const ItemContainer({
+  const ItemContainerVertical({
     super.key,
     required this.imageAsset,
     required this.dishName,
@@ -69,7 +69,7 @@ class ItemContainer extends StatelessWidget {
                     ),
                     const AddButton(),
                   ],
-                )
+                ),
               ],
             ),
           )
