@@ -11,6 +11,7 @@ export 'widgets/item_container_horizontal.dart';
 export 'widgets/add_button.dart';
 export 'widgets/cart_items.dart';
 export 'widgets/count_button.dart';
+export 'widgets/cooking_instruction.dart';
 
 export 'miscellaneous/customexpansion_tile.dart';
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:grarri_assignment/providers/dish_provider.dart';
 import 'package:grarri_assignment/screens/homescreens/homescreen.dart';
 import 'package:grarri_assignment/screens/menuscreens/menuscreen.dart';
@@ -38,7 +39,11 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
         MaterialPageRoute(
           builder: (context) => PlaceOrderScreen(),
         ),
-      );
+      ).then((_) {
+        setState(() {
+          currentIndex = 0;
+        });
+      });
     }
   }
 
@@ -58,12 +63,31 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
         onTap: onTabTapped,
         currentIndex: currentIndex,
         items: [
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.bolt),
+          BottomNavigationBarItem(
+            icon: Container(
+              padding: const EdgeInsets.all(2),
+              decoration: BoxDecoration(
+                  color: DsColors.white,
+                  borderRadius: BorderRadius.circular(10)),
+              child: SvgPicture.asset(
+                "assets/images/bolt_black.svg",
+                height: 28,
+                width: 28,
+              ),
+            ),
             label: "",
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.import_contacts),
+          BottomNavigationBarItem(
+            icon: Container(
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  color: DsColors.white,
+                  borderRadius: BorderRadius.circular(10)),
+              child: const Icon(
+                Icons.import_contacts,
+                color: DsColors.black,
+              ),
+            ),
             label: "",
           ),
           BottomNavigationBarItem(
@@ -82,7 +106,12 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                 }),
               ),
               offset: const Offset(8, -6),
-              child: const Icon(Icons.local_mall),
+              child: Container(
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                      color: DsColors.white,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Icon(Icons.local_mall)),
             ),
             label: "",
           ),

@@ -1,0 +1,17 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="bolt_black_24dp 1" clip-path="url(#clip0_2044_9)">
+<g id="Group">
+<path id="Vector" d="M9.16667 17.5H8.33334L9.16667 11.6667H6.25001C5.51667 11.6667 5.97501 11.0417 5.99167 11.0167C7.06667 9.11667 8.68334 6.28333 10.8417 2.5H11.675L10.8417 8.33333H13.7667C14.1 8.33333 14.2833 8.49167 14.1 8.88333C10.8083 14.625 9.16667 17.5 9.16667 17.5Z" fill="url(#paint0_linear_2044_9)"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_2044_9" x1="5.83499" y1="10" x2="14.1726" y2="10" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FEAC5E"/>
+<stop offset="0.5" stop-color="#C779D0"/>
+<stop offset="1" stop-color="#4BC0C8"/>
+</linearGradient>
+<clipPath id="clip0_2044_9">
+<rect width="20" height="20" fill="white"/>
+</clipPath>
+</defs>
+</svg>
