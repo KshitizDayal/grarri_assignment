@@ -8,7 +8,7 @@ final jsonDishData = [
     "dish_picture": DsImages.bowl1,
     "veg": true,
     "category": "Choclate",
-    "count": 0
+    "count": 1
   },
   {
     "dish_id": "002",
@@ -17,7 +17,7 @@ final jsonDishData = [
     "dish_picture": DsImages.bowl2,
     "veg": true,
     "category": "Choclate",
-    "count": 0
+    "count": 1
   },
   {
     "dish_id": "003",
@@ -26,7 +26,7 @@ final jsonDishData = [
     "dish_picture": DsImages.bowl3,
     "veg": true,
     "category": "Fruit",
-    "count": 0
+    "count": 1
   },
   {
     "dish_id": "004",
@@ -35,7 +35,7 @@ final jsonDishData = [
     "dish_picture": DsImages.bowl4,
     "veg": true,
     "category": "Fruit",
-    "count": 0
+    "count": 1
   },
   {
     "dish_id": "005",
@@ -44,6 +44,6 @@ final jsonDishData = [
     "dish_picture": DsImages.bowl5,
     "veg": true,
     "category": "Choclate",
-    "count": 0
+    "count": 1
   },
 ];

@@ -6,11 +6,13 @@ class ItemContainerVertical extends StatelessWidget {
   final String imageAsset;
   final String dishName;
   final String price;
+  final Widget bottomButton;
   const ItemContainerVertical({
     super.key,
     required this.imageAsset,
     required this.dishName,
     required this.price,
+    required this.bottomButton,
   });
 
   final borderRadius8 = const Radius.circular(8);
@@ -67,7 +69,7 @@ class ItemContainerVertical extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    const AddButton(),
+                    bottomButton,
                   ],
                 ),
               ],

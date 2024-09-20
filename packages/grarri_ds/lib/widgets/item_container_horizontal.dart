@@ -68,7 +68,9 @@ class ItemContainerHorizontal extends StatelessWidget {
                       ),
                       Container(
                         margin: const EdgeInsets.only(right: 4),
-                        child: const AddButton(),
+                        child: AddButton(
+                          onTap: () {},
+                        ),
                       ),
                     ],
                   ),

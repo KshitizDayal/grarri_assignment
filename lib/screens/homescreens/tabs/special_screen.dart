@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grarri_assignment/providers/order_provider.dart';
 import 'package:grarri_ds/grarri_ds.dart';
 import 'package:provider/provider.dart';
 
@@ -8,15 +9,20 @@ class SpecialScreen extends StatelessWidget {
   SpecialScreen({super.key});
 
   late DishProvider _dishProvider;
+  late OrderProvider _orderProvider;
 
   @override
   Widget build(BuildContext context) {
+    print(OrderProvider.instance.cartItems);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: DishProvider.instance),
+        ChangeNotifierProvider.value(value: OrderProvider.instance),
       ],
       child: Builder(builder: (BuildContext providerContext) {
         _dishProvider = Provider.of<DishProvider>(providerContext);
+        _orderProvider = Provider.of<OrderProvider>(providerContext);
+
         return Container(
           margin: const EdgeInsets.all(16),
           child: SingleChildScrollView(
@@ -98,10 +104,34 @@ class SpecialScreen extends StatelessWidget {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (BuildContext context, int index) {
+                    bool addedToCart = _orderProvider.cartItems.any((element) =>
+                        element.dishId == _dishProvider.dishData[index].dishId);
                     return ItemContainerVertical(
                       imageAsset: _dishProvider.dishData[index].dishPicture!,
                       dishName: _dishProvider.dishData[index].dishName!,
                       price: _dishProvider.dishData[index].price.toString(),
+                      bottomButton: addedToCart
+                          ? CountButton(
+                              increment: () {
+                                _orderProvider.addItemToCart(
+                                    _dishProvider.dishData[index]);
+                              },
+                              decrement: () {
+                                _orderProvider.removeItemToCart(
+                                    _dishProvider.dishData[index]);
+                              },
+                              count: _orderProvider.cartItems
+                                      .firstWhere((element) =>
+                                          element.dishId ==
+                                          _dishProvider.dishData[index].dishId)
+                                      .count ??
+                                  0)
+                          : AddButton(
+                              onTap: () {
+                                _orderProvider.addItemToCart(
+                                    _dishProvider.dishData[index]);
+                              },
+                            ),
                     );
                   },
                 ),
