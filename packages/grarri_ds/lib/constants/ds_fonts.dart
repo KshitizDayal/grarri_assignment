@@ -9,6 +9,13 @@ class DsFonts {
     color: DsColors.black,
   );
 
+  static const TextStyle bold18 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w700,
+    fontFamily: _fontFamilyUbuntu,
+    color: DsColors.black,
+  );
+
   static const TextStyle bold16 = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w700,

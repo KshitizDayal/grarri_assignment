@@ -3,6 +3,7 @@ import 'package:grarri_assignment/providers/dish_provider.dart';
 import 'package:grarri_ds/grarri_ds.dart';
 import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
 

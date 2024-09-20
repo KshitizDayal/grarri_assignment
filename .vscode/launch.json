@@ -1,0 +1,45 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "grarri_assignment",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "grarri_assignment (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "grarri_assignment (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "grarri_ds",
+            "cwd": "packages/grarri_ds",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "grarri_ds (profile mode)",
+            "cwd": "packages/grarri_ds",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "grarri_ds (release mode)",
+            "cwd": "packages/grarri_ds",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

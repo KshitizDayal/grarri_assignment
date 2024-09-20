@@ -12,15 +12,35 @@ class AddButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: DsColors.colorF0F0F3,
+          color: DsColors.white,
           borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: DsColors.black.withOpacity(0.08),
+              offset: const Offset(2, 4),
+              blurRadius: 3,
+              spreadRadius: 1,
+            ),
+          ],
         ),
         padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
         child: Row(
           children: [
             Container(
               decoration: const BoxDecoration(
-                  color: DsColors.white, shape: BoxShape.circle),
+                color: DsColors.white,
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black,
+                  ),
+                  BoxShadow(
+                    color: Colors.white,
+                    spreadRadius: -5.0,
+                    blurRadius: 20.0,
+                  ),
+                ],
+              ),
               child: const Icon(
                 Icons.add,
                 color: DsColors.color5BAC81,

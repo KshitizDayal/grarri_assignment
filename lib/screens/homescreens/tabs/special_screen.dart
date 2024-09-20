@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../../providers/dish_provider.dart';
 
+// ignore: must_be_immutable
 class SpecialScreen extends StatelessWidget {
   SpecialScreen({super.key});
 
@@ -13,7 +14,6 @@ class SpecialScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(OrderProvider.instance.cartItems);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: DishProvider.instance),
@@ -70,71 +70,60 @@ class SpecialScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 24),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text("Today's Special",
-                        style: DsFonts.medium14
-                            .copyWith(color: DsColors.color4A5662)),
-                    const SizedBox(width: 12),
-                    Expanded(
-                        child: Container(
-                            margin: const EdgeInsets.only(top: 2),
-                            child: Divider(
-                                color: DsColors.color4A5662.withOpacity(0.4)))),
-                    const SizedBox(width: 6),
-                    const Icon(
-                      Icons.arrow_drop_up,
-                      color: DsColors.color3CBCB4,
-                      size: 32,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                GridView.builder(
-                  itemCount: _dishProvider.dishData.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 8.0,
-                    crossAxisSpacing: 8.0,
-                    childAspectRatio: 0.8,
-                  ),
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (BuildContext context, int index) {
-                    bool addedToCart = _orderProvider.cartItems.any((element) =>
-                        element.dishId == _dishProvider.dishData[index].dishId);
-                    return ItemContainerVertical(
-                      imageAsset: _dishProvider.dishData[index].dishPicture!,
-                      dishName: _dishProvider.dishData[index].dishName!,
-                      price: _dishProvider.dishData[index].price.toString(),
-                      bottomButton: addedToCart
-                          ? CountButton(
-                              increment: () {
-                                _orderProvider.addItemToCart(
-                                    _dishProvider.dishData[index]);
-                              },
-                              decrement: () {
-                                _orderProvider.removeItemToCart(
-                                    _dishProvider.dishData[index]);
-                              },
-                              count: _orderProvider.cartItems
-                                      .firstWhere((element) =>
-                                          element.dishId ==
-                                          _dishProvider.dishData[index].dishId)
-                                      .count ??
-                                  0)
-                          : AddButton(
-                              onTap: () {
-                                _orderProvider.addItemToCart(
-                                    _dishProvider.dishData[index]);
-                              },
-                            ),
-                    );
-                  },
-                ),
+                const SizedBox(height: 12),
+                CustomExpansionTile(
+                    title: "Today's Special",
+                    isExpanded: true,
+                    children: [
+                      GridView.builder(
+                        itemCount: _dishProvider.dishData.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 8.0,
+                          crossAxisSpacing: 8.0,
+                          childAspectRatio: 0.8,
+                        ),
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (BuildContext context, int index) {
+                          bool addedToCart = _orderProvider.cartItems.any(
+                              (element) =>
+                                  element.dishId ==
+                                  _dishProvider.dishData[index].dishId);
+                          return ItemContainerVertical(
+                            imageAsset:
+                                _dishProvider.dishData[index].dishPicture!,
+                            dishName: _dishProvider.dishData[index].dishName!,
+                            price:
+                                _dishProvider.dishData[index].price.toString(),
+                            bottomButton: addedToCart
+                                ? CountButton(
+                                    increment: () {
+                                      _orderProvider.addItemToCart(
+                                          _dishProvider.dishData[index]);
+                                    },
+                                    decrement: () {
+                                      _orderProvider.removeItemToCart(
+                                          _dishProvider.dishData[index]);
+                                    },
+                                    count: _orderProvider.cartItems
+                                            .firstWhere((element) =>
+                                                element.dishId ==
+                                                _dishProvider
+                                                    .dishData[index].dishId)
+                                            .count ??
+                                        0)
+                                : AddButton(
+                                    onTap: () {
+                                      _orderProvider.addItemToCart(
+                                          _dishProvider.dishData[index]);
+                                    },
+                                  ),
+                          );
+                        },
+                      ),
+                    ]),
               ],
             ),
           ),

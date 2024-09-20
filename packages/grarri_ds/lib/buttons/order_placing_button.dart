@@ -40,11 +40,27 @@ class OrderPlacingButton extends StatelessWidget {
                   "PLACE ORDER",
                   style: DsFonts.regular14.copyWith(color: DsColors.white),
                 ),
-                const SizedBox(width: 4),
-                const Icon(
-                  Icons.arrow_forward,
-                  color: DsColors.white,
-                )
+                const SizedBox(width: 6),
+                Container(
+                  padding: const EdgeInsets.all(3),
+                  decoration: ShapeDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment(0.71, -0.71),
+                      end: Alignment(-0.71, 0.71),
+                      colors: [Color(0xFF459DAF), Color(0xFF007991)],
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                  ),
+                  child: Container(
+                    decoration: const BoxDecoration(),
+                    child: const Icon(
+                      Icons.arrow_forward,
+                      color: DsColors.white,
+                    ),
+                  ),
+                ),
               ],
             )
           ],

@@ -19,6 +19,15 @@ class _HomeScreenState extends State<HomeScreen> {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
+          elevation: 4,
+          shadowColor: DsColors.colorF0F3F1,
+          backgroundColor: DsColors.colorF0F3F1,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(12),
+              bottomRight: Radius.circular(12),
+            ),
+          ),
           leading: Container(
             margin: const EdgeInsets.only(left: 24),
             decoration: const BoxDecoration(

@@ -9,12 +9,13 @@ class CustomExpansionTile extends StatefulWidget {
   final String title;
   final List<Widget> children;
   bool isExpanded;
-  CustomExpansionTile({
-    super.key,
-    required this.title,
-    required this.children,
-    required this.isExpanded,
-  });
+  final double widthBetweenChild;
+  CustomExpansionTile(
+      {super.key,
+      required this.title,
+      required this.children,
+      required this.isExpanded,
+      this.widthBetweenChild = 0});
 
   @override
   State<CustomExpansionTile> createState() => _CustomExpansionTileState();
@@ -107,13 +108,14 @@ class _CustomExpansionTileState extends State<CustomExpansionTile>
                       margin: const EdgeInsets.only(top: 2),
                       child: Divider(
                           color: DsColors.color4A5662.withOpacity(0.4)))),
-              const SizedBox(width: 6),
+              SizedBox(width: widget.widthBetweenChild),
               InkWell(
                 onTap: _handleTap,
                 child: _buildIcon(context),
               ),
             ],
           ),
+          const SizedBox(height: 12),
           ClipRect(
             child: Align(
               alignment: Alignment.center,

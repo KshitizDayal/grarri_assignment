@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: DsColors.colorF1F1F1,
         appBarTheme: const AppBarTheme(
           color: DsColors.colorF0F3F1,
+          surfaceTintColor: Colors.transparent,
         ),
         useMaterial3: true,
       ),

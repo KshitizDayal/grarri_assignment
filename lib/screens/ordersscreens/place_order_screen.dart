@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../providers/order_provider.dart';
 
+// ignore: must_be_immutable
 class PlaceOrderScreen extends StatelessWidget {
   PlaceOrderScreen({super.key});
 
@@ -13,7 +14,44 @@ class PlaceOrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        elevation: 4,
+        shadowColor: DsColors.colorF1F1F1,
+        backgroundColor: DsColors.colorF1F1F1,
+        leading: Container(
+          margin: const EdgeInsets.only(left: 4),
+          child: AppBarIcons(
+            icon: const Icon(Icons.arrow_back),
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
+        title: Text(
+          "Place Order",
+          style: DsFonts.bold18.copyWith(color: DsColors.color4A5662),
+        ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(12),
+            bottomRight: Radius.circular(12),
+          ),
+        ),
+        actions: [
+          AppBarIcons(
+            icon: const Icon(
+              Icons.feedback,
+              color: Color(0xFFF4B740),
+            ),
+            onTap: () {},
+          ),
+          const SizedBox(width: 16),
+        ],
+        bottom: const PreferredSize(
+          preferredSize: Size.fromHeight(20),
+          child: SizedBox(),
+        ),
+      ),
       body: MultiProvider(
         providers: [
           ChangeNotifierProvider.value(value: OrderProvider.instance),
@@ -37,40 +75,57 @@ class PlaceOrderScreen extends StatelessWidget {
                           title: "Current Order",
                           isExpanded: true,
                           children: [
-                            ListView.builder(
-                              itemCount: _orderProvider.cartItems.length,
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                return CartItems(
-                                  isOrderPlaced: false,
-                                  dishName: _orderProvider
-                                          .cartItems[index].dishName ??
-                                      "",
-                                  price:
-                                      _orderProvider.cartItems[index].price ??
-                                          0,
-                                  quantity:
-                                      _orderProvider.cartItems[index].count ??
-                                          0,
-                                  bottomWidget: CountButton(
-                                      increment: () {
-                                        _orderProvider.addItemToCart(
-                                            _orderProvider.cartItems[index]);
-                                      },
-                                      decrement: () {
-                                        _orderProvider.removeItemToCart(
-                                            _orderProvider.cartItems[index]);
-                                      },
-                                      count: _orderProvider.cartItems
-                                              .firstWhere((element) =>
-                                                  element.dishId ==
-                                                  _orderProvider
-                                                      .cartItems[index].dishId)
-                                              .count ??
-                                          0),
-                                );
-                              },
+                            Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: DsColors.black.withOpacity(0.08),
+                                  ),
+                                  const BoxShadow(
+                                      color: DsColors.white,
+                                      spreadRadius: -1.0,
+                                      blurRadius: 10,
+                                      offset: Offset(4, 4)),
+                                ],
+                              ),
+                              child: ListView.builder(
+                                itemCount: _orderProvider.cartItems.length,
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  return CartItems(
+                                    isOrderPlaced: false,
+                                    dishName: _orderProvider
+                                            .cartItems[index].dishName ??
+                                        "",
+                                    price:
+                                        _orderProvider.cartItems[index].price ??
+                                            0,
+                                    quantity:
+                                        _orderProvider.cartItems[index].count ??
+                                            0,
+                                    bottomWidget: CountButton(
+                                        increment: () {
+                                          _orderProvider.addItemToCart(
+                                              _orderProvider.cartItems[index]);
+                                        },
+                                        decrement: () {
+                                          _orderProvider.removeItemToCart(
+                                              _orderProvider.cartItems[index]);
+                                        },
+                                        count: _orderProvider.cartItems
+                                                .firstWhere((element) =>
+                                                    element.dishId ==
+                                                    _orderProvider
+                                                        .cartItems[index]
+                                                        .dishId)
+                                                .count ??
+                                            0),
+                                  );
+                                },
+                              ),
                             ),
                           ],
                         ),
@@ -81,46 +136,62 @@ class PlaceOrderScreen extends StatelessWidget {
                           title: "Previous Order",
                           isExpanded: false,
                           children: [
-                            ListView.builder(
-                              itemCount:
-                                  _orderProvider.previouOrderItems.length,
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                print(
-                                    _orderProvider.previouOrderItems[0].count);
-                                return CartItems(
-                                  isOrderPlaced: true,
-                                  dishName: _orderProvider
-                                          .previouOrderItems[index].dishName ??
-                                      "",
-                                  price: _orderProvider
-                                          .previouOrderItems[index].price ??
-                                      0,
-                                  quantity: _orderProvider
-                                          .previouOrderItems[index].count ??
-                                      0,
-                                  bottomWidget: CountButton(
-                                      increment: () {
-                                        _orderProvider.addItemToCart(
-                                            _orderProvider
-                                                .previouOrderItems[index]);
-                                      },
-                                      decrement: () {
-                                        _orderProvider.removeItemToCart(
-                                            _orderProvider
-                                                .previouOrderItems[index]);
-                                      },
-                                      count: _orderProvider.previouOrderItems
-                                              .firstWhere((element) =>
-                                                  element.dishId ==
-                                                  _orderProvider
-                                                      .previouOrderItems[index]
-                                                      .dishId)
-                                              .count ??
-                                          0),
-                                );
-                              },
+                            Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: DsColors.black.withOpacity(0.08),
+                                  ),
+                                  const BoxShadow(
+                                      color: DsColors.white,
+                                      spreadRadius: -1.0,
+                                      blurRadius: 10,
+                                      offset: Offset(4, 4)),
+                                ],
+                              ),
+                              child: ListView.builder(
+                                itemCount:
+                                    _orderProvider.previouOrderItems.length,
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  return CartItems(
+                                    isOrderPlaced: true,
+                                    dishName: _orderProvider
+                                            .previouOrderItems[index]
+                                            .dishName ??
+                                        "",
+                                    price: _orderProvider
+                                            .previouOrderItems[index].price ??
+                                        0,
+                                    quantity: _orderProvider
+                                            .previouOrderItems[index].count ??
+                                        0,
+                                    bottomWidget: CountButton(
+                                        increment: () {
+                                          _orderProvider.addItemToCart(
+                                              _orderProvider
+                                                  .previouOrderItems[index]);
+                                        },
+                                        decrement: () {
+                                          _orderProvider.removeItemToCart(
+                                              _orderProvider
+                                                  .previouOrderItems[index]);
+                                        },
+                                        count: _orderProvider.previouOrderItems
+                                                .firstWhere((element) =>
+                                                    element.dishId ==
+                                                    _orderProvider
+                                                        .previouOrderItems[
+                                                            index]
+                                                        .dishId)
+                                                .count ??
+                                            0),
+                                  );
+                                },
+                              ),
                             ),
                           ],
                         ),
