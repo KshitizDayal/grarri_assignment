@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grarri_ds/grarri_ds.dart';
 
-import '../custom_expansion_tile.dart' as expansion;
-
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
@@ -15,7 +13,7 @@ class MainScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            expansion.ExpansionTile(
+            CustomExpansionTile(
               title: "Acai Bowls",
               children: [
                 ListView.builder(
