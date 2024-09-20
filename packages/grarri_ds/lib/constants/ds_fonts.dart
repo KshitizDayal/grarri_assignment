@@ -44,5 +44,12 @@ class DsFonts {
     color: DsColors.black,
   );
 
+  static const TextStyle regular14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w300,
+    fontFamily: _fontFamilyUbuntu,
+    color: DsColors.black,
+  );
+
   static const _fontFamilyUbuntu = "Ubuntu";
 }

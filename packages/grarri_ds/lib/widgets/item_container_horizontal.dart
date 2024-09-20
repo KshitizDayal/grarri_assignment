@@ -54,11 +54,17 @@ class ItemContainerHorizontal extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "\u20B9 $price",
-                        style: DsFonts.medium14,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
+                      Row(
+                        children: [
+                          const VegIcon(),
+                          const SizedBox(width: 6),
+                          Text(
+                            "\u20B9$price",
+                            style: DsFonts.medium14,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
                       ),
                       Container(
                         margin: const EdgeInsets.only(right: 4),

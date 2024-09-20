@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:grarri_assignment/screens/tabs/beverages_screen.dart';
-import 'package:grarri_assignment/screens/tabs/desserts_screen.dart';
-import 'package:grarri_assignment/screens/tabs/main_screen.dart';
-import 'package:grarri_assignment/screens/tabs/special_screen.dart';
+import 'package:grarri_assignment/screens/homescreens/tabs/beverages_screen.dart';
+import 'package:grarri_assignment/screens/homescreens/tabs/desserts_screen.dart';
+import 'package:grarri_assignment/screens/homescreens/tabs/main_screen.dart';
+import 'package:grarri_assignment/screens/homescreens/tabs/special_screen.dart';
 import 'package:grarri_ds/grarri_ds.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -59,12 +59,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
             SpecialScreen(),
             MainScreen(),
-            DessertsScreen(),
-            BeveragesScreen(),
+            const DessertsScreen(),
+            const BeveragesScreen(),
           ],
         ),
       ),

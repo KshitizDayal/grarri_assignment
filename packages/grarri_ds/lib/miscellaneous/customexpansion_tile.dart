@@ -12,8 +12,8 @@ class CustomExpansionTile extends StatefulWidget {
   CustomExpansionTile({
     super.key,
     required this.title,
-    this.children = const <Widget>[],
-    this.isExpanded = false,
+    required this.children,
+    required this.isExpanded,
   });
 
   @override
@@ -39,6 +39,11 @@ class _CustomExpansionTileState extends State<CustomExpansionTile>
       parent: _animationController.drive(_heightFactorTween),
       curve: Curves.easeIn,
     );
+
+    if (widget.isExpanded) {
+      _animationController.value = 1.0;
+    }
+
     super.initState();
   }
 
